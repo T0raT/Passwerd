@@ -1,0 +1,20 @@
+:root {
+  --dark-bg: #1f2937;
+  --dark-fg-text: #ffffff;
+  --dark-fg-g-text: #55f991;
+  --dark-fg-sub-text: #d5d4d8;
+  --dark-fg-btn: #10b981;
+}
+
+@font-face {
+  font-family: DepartureMono;
+  src: url(/public/DepartureMono-Regular.otf);
+}
+
+#app {
+  background-color: var(--dark-bg);
+  font-family: DepartureMono;
+
+  width: 100vw;
+  height: 100vh;
+}
