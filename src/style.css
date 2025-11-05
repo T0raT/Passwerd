@@ -8,13 +8,34 @@
 
 @font-face {
   font-family: DepartureMono;
-  src: url(/public/DepartureMono-Regular.otf);
+  src: url(/DepartureMono-Regular.otf);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #app {
-  background-color: var(--dark-bg);
   font-family: DepartureMono;
+  width: 100%;
+  max-width: 650px;
+  min-width: 360px;
+  height: 650px;
+  margin: auto;
+}
 
-  width: 100vw;
-  height: 100vh;
+.hero-header {
+  color: var(--dark-fg-text);
+}
+.green-header {
+  color: var(--dark-fg-g-text);
+}
+
+#hero-subtext {
+  color: var(--dark-fg-sub-text);
 }

@@ -1,1 +1,1 @@
-import { LETTERS, NUMBERS, SYMBOLS } from "./lib/constants.js";
+import { UPPERCASE, LOWERCASE, NUMBERS, SYMBOLS } from "./lib/constants.js";

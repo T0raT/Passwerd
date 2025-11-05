@@ -1,4 +1,6 @@
-const LETTERS = [
+// A total of 91 characters including all char sets
+
+const UPPERCASE = [
   "A",
   "B",
   "C",
@@ -25,6 +27,9 @@ const LETTERS = [
   "X",
   "Y",
   "Z",
+];
+
+const LOWERCASE = [
   "a",
   "b",
   "c",
@@ -87,4 +92,4 @@ const SYMBOLS = [
   "/",
 ];
 
-export { LETTERS, NUMBERS, SYMBOLS };
+export { UPPERCASE, LOWERCASE, NUMBERS, SYMBOLS };
