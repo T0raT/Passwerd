@@ -27,8 +27,12 @@ body {
   min-width: 360px;
   height: 650px;
   margin: auto;
+  padding: 20px;
 }
 
+#hero {
+  margin-bottom: 30px;
+}
 .hero-header {
   color: var(--dark-fg-text);
 }
@@ -38,4 +42,28 @@ body {
 
 #hero-subtext {
   color: var(--dark-fg-sub-text);
+}
+
+#gen-btn {
+  background-color: var(--dark-fg-btn);
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 30px;
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 2px solid #2f3e53;
+  margin-bottom: 30px;
+}
+
+.output {
+  color: var(--dark-fg-g-text);
+  background-color: #273549;
+  width: 220px;
+  text-align: center;
+  padding: 9px 0;
+  border-radius: 5px;
 }

@@ -1,6 +1,13 @@
 import { UPPERCASE, LOWERCASE, NUMBERS, SYMBOLS } from "./constants.ts";
+import { AtomicEntropy, randInt } from "./RNG.ts";
 
-// Lowercase should ALWAYS be included.
+/**
+ * 1. Generate user defined charset, lowercase should ALWAYS be included.
+ * 2. Shuffle charset
+ * 3. Generate a random number between 0 and length of charset
+ * 4. Shuffle charset each time randomly choosing for password
+ * 5. TODO: Still need pipeline for sanitization checking
+ * */
 
 interface Config {
   upper: boolean;
@@ -18,13 +25,6 @@ const fakeConfig: Config = {
   length: 12,
 };
 
-function AtomicEntropy() {
-  // Generates a random value betwen 0~1, meant to mimick Math.random
-  const arr = new Uint32Array(1);
-  self.crypto.getRandomValues(arr);
-  return arr[0] / 4294967295;
-}
-
 function shuffleArr(arr: string[]) {
   for (let i = arr.length - 1; i > 0; i--) {
     let j = Math.floor(AtomicEntropy() * (i + 1));
@@ -39,13 +39,19 @@ function generateCharset(usrConfig: Config) {
   if (usrConfig.upper) charset = charset.concat(UPPERCASE);
   if (usrConfig.nums) charset = charset.concat(NUMBERS);
   if (usrConfig.symb) charset = charset.concat(SYMBOLS);
-  const finalset = shuffleArr(charset); // Shuffle the array for extra randomness.
-  return finalset;
+  return charset;
 }
 
 export function PassGen(usrConfig: Config) {
-  const charset = generateCharset(usrConfig);
-  return false;
+  let charset = generateCharset(usrConfig);
+  let password = "";
+
+  for (let i = 0; i < usrConfig.length; i++) {
+    charset = shuffleArr(charset);
+    const rng = randInt(charset.length);
+    password += charset[rng];
+  }
+  return password;
 }
 
-generateCharset(fakeConfig);
+console.log(PassGen(fakeConfig));
