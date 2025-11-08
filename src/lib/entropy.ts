@@ -6,10 +6,11 @@ import { AtomicEntropy, randInt } from "./RNG.ts";
  * 2. Shuffle charset
  * 3. Generate a random number between 0 and length of charset
  * 4. Shuffle charset each time randomly choosing for password
- * 5. TODO: Still need pipeline for sanitization checking
+ * 5. TODO: Check nbp for common password
+ * 6. TODO: pipeline for sanitization checking
  * */
 
-interface Config {
+export interface Config {
   upper: boolean;
   lower: boolean;
   nums: boolean;
@@ -42,7 +43,7 @@ function generateCharset(usrConfig: Config) {
   return charset;
 }
 
-export function PassGen(usrConfig: Config) {
+export default function PassGen(usrConfig: Config) {
   let charset = generateCharset(usrConfig);
   let password = "";
 
