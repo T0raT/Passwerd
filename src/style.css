@@ -40,7 +40,7 @@ body {
   color: var(--dark-fg-g-text);
 }
 
-#hero-subtext {
+.hero-subtext {
   color: var(--dark-fg-sub-text);
 }
 
@@ -62,7 +62,6 @@ hr.solid {
 .output {
   color: var(--dark-fg-g-text);
   background-color: #273549;
-  width: 220px;
   text-align: center;
   padding: 9px 0;
   border-radius: 5px;
