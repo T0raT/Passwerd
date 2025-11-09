@@ -26,6 +26,12 @@ const fakeConfig: Config = {
   length: 12,
 };
 
+/**
+ * Shuffles an array using the Fisher–Yates algorithm.
+ * Uses the safer Crypto inferface.
+ * @param {string[]} arr - An array of string
+ * @returns {string[]} a shuffled array of strings
+ * */
 function shuffleArr(arr: string[]) {
   for (let i = arr.length - 1; i > 0; i--) {
     let j = Math.floor(AtomicEntropy() * (i + 1));
@@ -36,7 +42,6 @@ function shuffleArr(arr: string[]) {
 
 function generateCharset(usrConfig: Config) {
   let charset = LOWERCASE;
-  AtomicEntropy();
   if (usrConfig.upper) charset = charset.concat(UPPERCASE);
   if (usrConfig.nums) charset = charset.concat(NUMBERS);
   if (usrConfig.symb) charset = charset.concat(SYMBOLS);
@@ -48,9 +53,10 @@ export default function PassGen(usrConfig: Config) {
   let password = "";
 
   for (let i = 0; i < usrConfig.length; i++) {
-    charset = shuffleArr(charset);
     const rng = randInt(charset.length);
     password += charset[rng];
+
+    if (i % 2 === 0) charset = shuffleArr(charset); // Shuffle only on even loops
   }
   return password;
 }
