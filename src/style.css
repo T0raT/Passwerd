@@ -44,27 +44,28 @@ body {
     color: var(--dark-fg-sub-text);
 }
 
-#gen-btn {
-    background-color: var(--dark-fg-btn);
-    color: white;
-    border: 0px;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-bottom: 30px;
-}
-
-/* Solid border */
-hr.solid {
-    border-top: 2px solid #2f3e53;
-    margin-bottom: 30px;
-}
-
 .output {
     color: var(--dark-fg-g-text);
     background-color: #273549;
     text-align: center;
     padding: 9px 0;
     border-radius: 5px;
+}
+
+/* User config form */
+#usr-config-form {
+    color: white;
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+#charset-wrapper {
+    margin-bottom: 10px;
+}
+#pass-len-wrapper {
+    display: flex;
+}
+#pass-len-wrapper label {
+    margin-right: 20px;
 }
 
 /* Button CSS */
@@ -121,12 +122,13 @@ hr.solid {
     will-change: transform;
     transform: translateY(-4px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+    transition: ease all 0.2s;
 }
 
 @media (min-width: 768px) {
     .gen-btn-front {
         font-size: 1.25rem;
-        padding: 12px 42px;
+        padding: 10px 12px;
     }
 }
 #gen-btn:hover {
@@ -151,4 +153,10 @@ hr.solid {
 }
 #gen-btn:focus:not(:focus-visible) {
     outline: none;
+}
+
+/* Solid border */
+hr.solid {
+    border-top: 1px solid slategray;
+    margin-bottom: 30px;
 }

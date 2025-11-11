@@ -17,6 +17,40 @@
                     Never use an insecure password again.
                 </p>
             </section>
+            <form id="usr-config-form">
+                <fieldset>
+                    <legend>Customize your password</legend>
+                    <div id="charset-wrapper">
+                        <input
+                            type="checkbox"
+                            id="numbers"
+                            name="numbers"
+                            value="nums"
+                        />
+                        <label for="numbers">Numbers</label>
+                        <input
+                            type="checkbox"
+                            id="symbols"
+                            name="symbols"
+                            value="symb"
+                        />
+                        <label for="symbols">Symbols</label>
+                    </div>
+
+                    <!-- Password length slider -->
+                    <div id="pass-len-wrapper">
+                        <label for="pass-len">Characters</label>
+                        <input
+                            id="pass-len-slider"
+                            type="range"
+                            name="pass-len"
+                            value="passLen"
+                            min="12"
+                            max="100"
+                        />
+                    </div>
+                </fieldset>
+            </form>
             <button id="gen-btn" role="button">
                 <span class="gen-btn-shadow"></span>
                 <span class="gen-btn-edge"></span>
