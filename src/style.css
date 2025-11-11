@@ -20,6 +20,12 @@ body {
     align-items: center;
 }
 
+/* Give text white color by default, override if needed */
+p {
+    color: white;
+    margin-bottom: 20px;
+}
+
 #app {
     font-family: DepartureMono;
     width: 100%;
@@ -74,7 +80,7 @@ body {
     border: none;
     background: transparent;
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     cursor: pointer;
     outline-offset: 4px;
     transition: filter 250ms;
