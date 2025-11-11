@@ -18,14 +18,6 @@ export interface Config {
   length: number;
 }
 
-const fakeConfig: Config = {
-  upper: true,
-  lower: true,
-  nums: true,
-  symb: true,
-  length: 12,
-};
-
 /**
  * Shuffles an array using the Fisher–Yates algorithm.
  * Uses the safer Crypto inferface.
@@ -60,5 +52,3 @@ export default function PassGen(usrConfig: Config) {
   }
   return password;
 }
-
-console.log(PassGen(fakeConfig));

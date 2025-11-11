@@ -21,19 +21,9 @@
                 <fieldset>
                     <legend>Customize your password</legend>
                     <div id="charset-wrapper">
-                        <input
-                            type="checkbox"
-                            id="numbers"
-                            name="numbers"
-                            value="nums"
-                        />
+                        <input type="checkbox" id="numbers" name="numbers" />
                         <label for="numbers">Numbers</label>
-                        <input
-                            type="checkbox"
-                            id="symbols"
-                            name="symbols"
-                            value="symb"
-                        />
+                        <input type="checkbox" id="symbols" name="symbols" />
                         <label for="symbols">Symbols</label>
                     </div>
 
@@ -44,10 +34,11 @@
                             id="pass-len-slider"
                             type="range"
                             name="pass-len"
-                            value="passLen"
+                            value="16"
                             min="12"
                             max="100"
                         />
+                        <span id="pass-len-output" class="green-text">16</span>
                     </div>
                 </fieldset>
             </form>

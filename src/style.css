@@ -26,6 +26,15 @@ p {
     margin-bottom: 20px;
 }
 
+input[type="range"] {
+    min-width: 150px;
+    margin-right: 10px;
+}
+
+.green-text {
+    color: #55f991;
+}
+
 #app {
     font-family: DepartureMono;
     width: 100%;
