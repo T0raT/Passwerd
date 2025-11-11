@@ -1,25 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./src/lib/css_reset.css" />
-    <link rel="stylesheet" href="./src/style.css" />
-    <link rel="icon" type="image/x-icon" href="./public/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>passgen</title>
-  </head>
-  <body>
-    <div id="app">
-      <section id="hero">
-        <h2 class="hero-header">Generate a</h2>
-        <h2 class="hero-header green-header">random password</h2>
-        <p class="hero-subtext">Never use an insecure password again.</p>
-        <br />
-      </section>
-      <button id="gen-btn">Generate password</button>
-      <hr class="solid" />
-      <div class="output">Generate a password!</div>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="./src/lib/css_reset.css" />
+        <link rel="stylesheet" href="./src/style.css" />
+        <link rel="icon" type="image/x-icon" href="./public/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>passgen</title>
+    </head>
+    <body>
+        <div id="app">
+            <section id="hero">
+                <h2 class="hero-header">Generate a</h2>
+                <h2 class="hero-header green-header">random password</h2>
+                <p class="hero-subtext">
+                    Never use an insecure password again.
+                </p>
+            </section>
+            <button id="gen-btn" role="button">
+                <span class="gen-btn-shadow"></span>
+                <span class="gen-btn-edge"></span>
+                <span class="gen-btn-front text"> Generate password </span>
+            </button>
+            <hr class="solid" />
+            <div class="output">Generate a password!</div>
+        </div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
 </html>
