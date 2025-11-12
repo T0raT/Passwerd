@@ -33,7 +33,7 @@ function shuffleArr(arr: string[]) {
   return arr;
 }
 
-function excludeSimilarChar(charset: string[]) {
+function avoidSimilarChar(charset: string[]) {
   /**
    * Very font dependent,
    * with departure mono it's easy to identify.
@@ -60,7 +60,7 @@ function generateCharset(usrConfig: Config) {
   if (usrConfig.upper) charset = charset.concat(UPPERCASE);
   if (usrConfig.nums) charset = charset.concat(NUMBERS);
   if (usrConfig.symb) charset = charset.concat(SYMBOLS);
-  if (usrConfig.similarChar) charset = excludeSimilarChar(charset);
+  if (usrConfig.similarChar) charset = avoidSimilarChar(charset);
   return charset;
 }
 

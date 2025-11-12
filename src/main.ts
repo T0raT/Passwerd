@@ -22,6 +22,8 @@ const passLenOutput =
 const passLen = document.querySelector<HTMLInputElement>("#pass-len-slider");
 const symbolsCheckBox = document.querySelector<HTMLInputElement>("#symbols");
 const numbersCheckBox = document.querySelector<HTMLInputElement>("#numbers");
+const similarCharCheckBox =
+  document.querySelector<HTMLInputElement>("#similar-char");
 const outputField = document.querySelector<HTMLElement>(".output");
 
 // Function takes user config and renders password to page
@@ -34,10 +36,17 @@ const renderToField = (config: Config) => {
 numbersCheckBox?.addEventListener("input", (e) => {
   const target = e.target as HTMLInputElement; // To resolve ts error Property 'value' does not exist on type 'EventTarget'. (ts 2339)
   usrConfig.nums = target.checked;
+  renderToField(usrConfig);
 });
 symbolsCheckBox?.addEventListener("input", (e) => {
   const target = e.target as HTMLInputElement;
   usrConfig.symb = target.checked;
+  renderToField(usrConfig);
+});
+similarCharCheckBox?.addEventListener("input", (e) => {
+  const target = e.target as HTMLInputElement;
+  usrConfig.similarChar = target.checked;
+  renderToField(usrConfig);
 });
 
 // Attach listener to password length slider
@@ -46,6 +55,7 @@ passLen?.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement;
     passLenOutput.textContent = target.value;
     usrConfig.length = Number(target.value); // Apparently better than parseInt for pure number strings
+    renderToField(usrConfig);
   }
 });
 
