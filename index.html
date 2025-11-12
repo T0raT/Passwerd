@@ -17,39 +17,51 @@
                     Never use an insecure password again.
                 </p>
             </section>
-            <form id="usr-config-form">
-                <fieldset>
-                    <legend>Customize your password</legend>
-                    <div id="charset-wrapper">
-                        <input type="checkbox" id="numbers" name="numbers" />
-                        <label for="numbers">Numbers</label>
-                        <input type="checkbox" id="symbols" name="symbols" />
-                        <label for="symbols">Symbols</label>
-                    </div>
+            <div class="app-section">
+                <form id="usr-config-form">
+                    <fieldset>
+                        <legend>Customize your password</legend>
+                        <div id="charset-wrapper">
+                            <input
+                                type="checkbox"
+                                id="numbers"
+                                name="numbers"
+                            />
+                            <label for="numbers">Numbers</label>
+                            <input
+                                type="checkbox"
+                                id="symbols"
+                                name="symbols"
+                            />
+                            <label for="symbols">Symbols</label>
+                        </div>
 
-                    <!-- Password length slider -->
-                    <div id="pass-len-wrapper">
-                        <label for="pass-len">Characters</label>
-                        <input
-                            id="pass-len-slider"
-                            type="range"
-                            name="pass-len"
-                            value="16"
-                            min="12"
-                            max="100"
-                        />
-                        <span id="pass-len-output" class="green-text">16</span>
-                    </div>
-                </fieldset>
-            </form>
-            <button id="gen-btn" role="button">
-                <span class="gen-btn-shadow"></span>
-                <span class="gen-btn-edge"></span>
-                <span class="gen-btn-front text"> Generate password </span>
-            </button>
-            <hr class="solid" />
-            <p>Generated passwords:</p>
-            <div class="output">Generate a password!</div>
+                        <!-- Password length slider -->
+                        <div id="pass-len-wrapper">
+                            <label for="pass-len">Characters</label>
+                            <input
+                                id="pass-len-slider"
+                                type="range"
+                                name="pass-len"
+                                value="16"
+                                min="12"
+                                max="100"
+                            />
+                            <span id="pass-len-output" class="green-text"
+                                >16</span
+                            >
+                        </div>
+                    </fieldset>
+                </form>
+                <button id="gen-btn" role="button">
+                    <span class="gen-btn-shadow"></span>
+                    <span class="gen-btn-edge"></span>
+                    <span class="gen-btn-front text"> Generate password </span>
+                </button>
+                <hr class="solid" />
+                <p>Generated passwords:</p>
+                <div class="output">Generate a password!</div>
+            </div>
         </div>
         <script type="module" src="/src/main.ts"></script>
     </body>
