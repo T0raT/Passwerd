@@ -1,5 +1,5 @@
 import { UPPERCASE, LOWERCASE, NUMBERS, SYMBOLS } from "./constants.ts";
-import { AtomicEntropy, randInt } from "./RNG.ts";
+import { atomicEntropy, randInt } from "./rng.ts";
 
 /**
  * 1. Generate user defined charset, lowercase should ALWAYS be included.
@@ -27,7 +27,7 @@ export interface Config {
  * */
 function shuffleArr(arr: string[]) {
   for (let i = arr.length - 1; i > 0; i--) {
-    let j = Math.floor(AtomicEntropy() * (i + 1));
+    let j = Math.floor(atomicEntropy() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
@@ -45,9 +45,9 @@ function avoidSimilarChar(charset: string[]) {
    */
 
   const toRemove: string[] = [];
-  toRemove.push(AtomicEntropy() < 0.5 ? "0" : "O");
-  toRemove.push(AtomicEntropy() < 0.5 ? "1" : "i");
-  toRemove.push(AtomicEntropy() < 0.5 ? "l" : "I");
+  toRemove.push(atomicEntropy() < 0.5 ? "0" : "O");
+  toRemove.push(atomicEntropy() < 0.5 ? "1" : "i");
+  toRemove.push(atomicEntropy() < 0.5 ? "l" : "I");
   charset.filter((item) => {
     toRemove.includes(item);
   });

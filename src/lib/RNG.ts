@@ -1,7 +1,7 @@
 /**
  * Generates a random float between (0, 1].
  */
-export function AtomicEntropy() {
+export function atomicEntropy() {
   const buf = new Uint32Array(1);
   let value: number;
   do {
@@ -20,5 +20,5 @@ export function AtomicEntropy() {
  * */
 export function randInt(n: number) {
   // Return a integer from [0,n)
-  return Math.floor(AtomicEntropy() * n);
+  return Math.floor(atomicEntropy() * n);
 }
