@@ -1,12 +1,12 @@
 /**
- * Generates a random float between (0, 1].
+ * @returns a random float between (0, 1].
  */
 export function atomicEntropy() {
   const buf = new Uint32Array(1);
   let value: number;
   do {
     // Purely for on the off chance it generates the max.
-    // Which should be so unlikely
+    // Which should be never
     crypto.getRandomValues(buf);
     value = buf[0];
   } while (value === 0xffffffff);
