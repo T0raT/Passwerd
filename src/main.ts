@@ -55,7 +55,6 @@ const renderToField = (config: Config) => {
 };
 
 // Text animation
-
 const { chars } = splitText("section", {
   chars: { wrap: "clip" },
 });

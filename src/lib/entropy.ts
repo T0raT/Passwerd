@@ -6,8 +6,8 @@ import { AtomicEntropy, randInt } from "./RNG.ts";
  * 2. Shuffle charset
  * 3. Generate a random number between 0 and length of charset
  * 4. Shuffle charset each time randomly choosing for password
- * 5. TODO: Check nbp for common password
- * 6. TODO: pipeline for sanitization checking
+ * TODO: Check nbp for common password
+ * TODO: pipeline for sanitization checking
  * */
 
 export interface Config {
@@ -15,6 +15,7 @@ export interface Config {
   lower: boolean;
   nums: boolean;
   symb: boolean;
+  similarChar: boolean;
   length: number;
 }
 
@@ -32,11 +33,31 @@ function shuffleArr(arr: string[]) {
   return arr;
 }
 
+function excludeSimilarChar(charset: string[]) {
+  /**
+   * Very font dependent,
+   * with departure mono it's easy to identify.
+   * But with more common fonts,
+   * definately harder to distinguish between them.
+   */
+
+  const toRemove: string[] = [];
+  toRemove.push(AtomicEntropy() < 0.5 ? "0" : "O");
+  toRemove.push(AtomicEntropy() < 0.5 ? "1" : "i");
+  toRemove.push(AtomicEntropy() < 0.5 ? "l" : "I");
+
+  return charset.filter((item) => {
+    toRemove.includes(item);
+  });
+}
+
 function generateCharset(usrConfig: Config) {
+  // There is probably a more elegant way of doing this :(
   let charset = LOWERCASE;
   if (usrConfig.upper) charset = charset.concat(UPPERCASE);
   if (usrConfig.nums) charset = charset.concat(NUMBERS);
   if (usrConfig.symb) charset = charset.concat(SYMBOLS);
+  if (usrConfig.similarChar) charset = excludeSimilarChar(charset);
   return charset;
 }
 
