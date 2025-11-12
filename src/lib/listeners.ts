@@ -44,8 +44,11 @@ export default function initListeners(usrConfig: Config) {
   passLen?.addEventListener("input", (e) => {
     if (passLenOutput && e.target) {
       const target = e.target as HTMLInputElement;
-      passLenOutput.textContent = target.value;
-      usrConfig.length = Number(target.value); // Apparently better than parseInt for pure number strings
+      // Incase of limit tempering
+      target.max = "100";
+      passLenOutput.textContent =
+        Number(target.value) > 100 ? "16" : target.value;
+      usrConfig.length = Number(target.value) > 100 ? 16 : Number(target.value); // Apparently better than parseInt for pure number strings
       renderToField(usrConfig);
     }
   });
