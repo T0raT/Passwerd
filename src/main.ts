@@ -4,8 +4,9 @@ import { animate, splitText, stagger, spring } from "animejs";
 const usrConfig = {
   upper: true,
   lower: true,
-  nums: false,
-  symb: false,
+  nums: true,
+  symb: true,
+  similarChar: true,
   length: 16,
 };
 
@@ -22,6 +23,12 @@ const passLen = document.querySelector<HTMLInputElement>("#pass-len-slider");
 const symbolsCheckBox = document.querySelector<HTMLInputElement>("#symbols");
 const numbersCheckBox = document.querySelector<HTMLInputElement>("#numbers");
 const outputField = document.querySelector<HTMLElement>(".output");
+
+// Function takes user config and renders password to page
+const renderToField = (config: Config) => {
+  if (!outputField) return;
+  outputField.textContent = PassGen(config);
+};
 
 // Event listeners for checkboxes
 numbersCheckBox?.addEventListener("input", (e) => {
@@ -47,12 +54,6 @@ genPassBtn?.addEventListener("click", (event) => {
   event.preventDefault();
   renderToField(usrConfig);
 });
-
-// Function takes user config and renders result password to field
-const renderToField = (config: Config) => {
-  if (!outputField) return;
-  outputField.textContent = PassGen(config);
-};
 
 // Text animation
 const { chars } = splitText("section", {

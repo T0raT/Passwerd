@@ -39,16 +39,19 @@ function excludeSimilarChar(charset: string[]) {
    * with departure mono it's easy to identify.
    * But with more common fonts,
    * definately harder to distinguish between them.
+   *
+   * Or you know, I probably can just remove all of it.
+   * Also adding integer/character/symbol character color later will help
    */
 
   const toRemove: string[] = [];
   toRemove.push(AtomicEntropy() < 0.5 ? "0" : "O");
   toRemove.push(AtomicEntropy() < 0.5 ? "1" : "i");
   toRemove.push(AtomicEntropy() < 0.5 ? "l" : "I");
-
-  return charset.filter((item) => {
+  charset.filter((item) => {
     toRemove.includes(item);
   });
+  return charset;
 }
 
 function generateCharset(usrConfig: Config) {
