@@ -1,6 +1,6 @@
+import * as THREE from "three";
 import PassGen, { type Config } from "./lib/entropy";
 import { animate, splitText, stagger, spring } from "animejs";
-
 const usrConfig = {
   upper: true,
   lower: true,
