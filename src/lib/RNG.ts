@@ -22,3 +22,17 @@ export function randInt(n: number) {
   // Return a integer from [0,n)
   return Math.floor(atomicEntropy() * n);
 }
+
+/**
+ * Shuffles an array using the Fisher–Yates algorithm.
+ * Uses the safer Crypto inferface.
+ * @param {string[]} arr - An array of string
+ * @returns {string[]} a shuffled array of strings
+ * */
+export function shuffleArr(arr: string[]) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(atomicEntropy() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}

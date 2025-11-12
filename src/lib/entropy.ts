@@ -1,5 +1,5 @@
 import { UPPERCASE, LOWERCASE, NUMBERS, SYMBOLS } from "./constants.ts";
-import { atomicEntropy, randInt } from "./rng.ts";
+import * as rng from "./rng.ts";
 
 /**
  * 1. Generate user defined charset, lowercase should ALWAYS be included.
@@ -19,20 +19,6 @@ export interface Config {
   length: number;
 }
 
-/**
- * Shuffles an array using the Fisher–Yates algorithm.
- * Uses the safer Crypto inferface.
- * @param {string[]} arr - An array of string
- * @returns {string[]} a shuffled array of strings
- * */
-function shuffleArr(arr: string[]) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    let j = Math.floor(atomicEntropy() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
 function avoidSimilarChar(charset: string[]) {
   /**
    * Very font dependent,
@@ -45,9 +31,9 @@ function avoidSimilarChar(charset: string[]) {
    */
 
   const toRemove: string[] = [];
-  toRemove.push(atomicEntropy() < 0.5 ? "0" : "O");
-  toRemove.push(atomicEntropy() < 0.5 ? "1" : "i");
-  toRemove.push(atomicEntropy() < 0.5 ? "l" : "I");
+  toRemove.push(rng.atomicEntropy() < 0.5 ? "0" : "O");
+  toRemove.push(rng.atomicEntropy() < 0.5 ? "1" : "i");
+  toRemove.push(rng.atomicEntropy() < 0.5 ? "l" : "I");
   charset.filter((item) => {
     toRemove.includes(item);
   });
@@ -69,10 +55,10 @@ export default function PassGen(usrConfig: Config) {
   let password = "";
 
   for (let i = 0; i < usrConfig.length; i++) {
-    const rng = randInt(charset.length);
-    password += charset[rng];
+    const randNum = rng.randInt(charset.length);
+    password += charset[randNum];
 
-    if (i % 2 === 0) charset = shuffleArr(charset); // Shuffle only on even loops
+    if (i % 2 === 0) charset = rng.shuffleArr(charset); // Shuffle only on even loops
   }
   return password;
 }

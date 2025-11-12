@@ -1,5 +1,5 @@
 import { animate, splitText, stagger, spring } from "animejs";
-export default function Animate() {
+export default function animatePage() {
   const { chars } = splitText("section", {
     chars: { wrap: "clip" },
   });
