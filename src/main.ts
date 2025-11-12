@@ -1,9 +1,3 @@
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
-
 import PassGen, { type Config } from "./lib/entropy";
 import { animate, splitText, stagger, spring } from "animejs";
 
@@ -60,7 +54,8 @@ const renderToField = (config: Config) => {
   outputField.textContent = PassGen(config);
 };
 
-// Animations
+// Text animation
+
 const { chars } = splitText("section", {
   chars: { wrap: "clip" },
 });
@@ -82,5 +77,3 @@ animate(".app-section", {
   }),
   translateY: { from: "100%" },
 });
-
-// Threejs Render and Shader
