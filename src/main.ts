@@ -11,5 +11,8 @@ const usrConfig = {
   length: 16,
 };
 
+// Should let users toggle between all charset options,
+// but enforces 1 charset minimum
+
 initListeners(usrConfig);
 animatePage();
