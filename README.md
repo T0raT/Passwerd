@@ -2,9 +2,7 @@
 
 A simple password generator built with Typescript, [`Bun`](https://bun.sh/package-manager) and [`Vite`](https://vite.dev/).
 
-Uses modern browser's [`Crypto`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) for baseline randomness, a safer method compared to `Math.random()`. 
-Though on older browsers `crypto` might not be available, should perferrably fall back to [`Random package`](https://www.npmjs.com/package/random).
-
+Uses modern browser's [`Crypto`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) for baseline randomness, a safer method compared to `Math.random()`. Maybe not be available on older browsers, should probably fall back to [`Random package`](https://www.npmjs.com/package/random).
 
 ## Special Thanks To...
 
