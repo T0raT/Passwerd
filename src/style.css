@@ -101,7 +101,6 @@ input[type="range"] {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-
 .gen-btn-shadow {
   position: absolute;
   top: 0;
@@ -114,7 +113,6 @@ input[type="range"] {
   transform: translateY(2px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
-
 .gen-btn-edge {
   position: absolute;
   top: 0;
@@ -130,7 +128,6 @@ input[type="range"] {
     hsl(160deg 84% 39%) 100%
   );
 }
-
 .gen-btn-front {
   display: block;
   position: relative;
