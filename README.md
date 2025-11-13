@@ -6,10 +6,10 @@ Uses modern browser's [`Crypto`](https://developer.mozilla.org/en-US/docs/Web/AP
 
 ## Special Thanks To...
 
-[Scrimba](https://scrimba.com) - For providing the figma designs, with my own modifications and implementation
+[Scrimba](https://scrimba.com) - Providing the figma designs, with my own modifications and implementation
 
-[Uiverse](https://uiverse.io/buttons) - For providing button css, with my own modifications and implementation
+[Uiverse](https://uiverse.io/buttons) - Providing button css, with my own modifications and implementation
 
-[dodled-jump](https://github.com/githubnext/dodled-jump) - For inspirations on the CRT effects.
+[dodled-jump](https://github.com/githubnext/dodled-jump) - Inspirations on the CRT effects.
 
-[Codex](https://openai.com/codex/) - For assistance with the CRT effect.
+[Codex](https://openai.com/codex/) - Assistance with the CRT effect.
