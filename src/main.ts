@@ -1,6 +1,6 @@
-import * as THREE from "three";
 import animatePage from "./lib/animation";
 import initListeners from "./lib/listeners";
+import initCRTShader from "./lib/crtshader";
 
 const usrConfig = {
   upper: true,
@@ -16,3 +16,4 @@ const usrConfig = {
 
 initListeners(usrConfig);
 animatePage();
+initCRTShader();
