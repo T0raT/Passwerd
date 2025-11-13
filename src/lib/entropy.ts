@@ -42,8 +42,9 @@ function avoidSimilarChar(charset: string[]) {
 
 function generateCharset(usrConfig: Config) {
   // There is probably a more elegant way of doing this :(
-  let charset = LOWERCASE;
+  let charset: string[] = [];
   if (usrConfig.upper) charset = charset.concat(UPPERCASE);
+  if (usrConfig.lower) charset = charset.concat(LOWERCASE);
   if (usrConfig.nums) charset = charset.concat(NUMBERS);
   if (usrConfig.symb) charset = charset.concat(SYMBOLS);
   if (usrConfig.similarChar) charset = avoidSimilarChar(charset);

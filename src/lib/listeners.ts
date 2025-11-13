@@ -8,13 +8,24 @@ export default function initListeners(usrConfig: Config) {
 
   // A bunch of other HTML elements
   const genPassBtn = document.getElementById("gen-btn");
+
+  const upperCaseCheckBox =
+    document.querySelector<HTMLInputElement>("#upper-case");
+
+  const lowerCaseCheckBox =
+    document.querySelector<HTMLInputElement>("#lower-case");
+
+  const symbolsCheckBox = document.querySelector<HTMLInputElement>("#symbols");
+
+  const numbersCheckBox = document.querySelector<HTMLInputElement>("#numbers");
+
+  const similarCharCheckBox =
+    document.querySelector<HTMLInputElement>("#similar-char");
+
   const passLenOutput =
     document.querySelector<HTMLSpanElement>("#pass-len-output");
   const passLen = document.querySelector<HTMLInputElement>("#pass-len-slider");
-  const symbolsCheckBox = document.querySelector<HTMLInputElement>("#symbols");
-  const numbersCheckBox = document.querySelector<HTMLInputElement>("#numbers");
-  const similarCharCheckBox =
-    document.querySelector<HTMLInputElement>("#similar-char");
+
   const outputField = document.querySelector<HTMLElement>(".output");
 
   // Function takes user config and renders password to page
@@ -24,16 +35,49 @@ export default function initListeners(usrConfig: Config) {
   };
 
   // Event listeners for checkboxes
-  numbersCheckBox?.addEventListener("input", (e) => {
+
+  upperCaseCheckBox?.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement; // To resolve ts error Property 'value' does not exist on type 'EventTarget'. (ts 2339)
-    usrConfig.nums = target.checked;
-    renderToField(usrConfig);
+
+    // conditinal to enforce at least 1 character set
+    if (!usrConfig.lower && !usrConfig.nums && !usrConfig.symb) {
+      target.checked = true;
+    } else {
+      usrConfig.upper = target.checked;
+      renderToField(usrConfig);
+    }
   });
+
+  lowerCaseCheckBox?.addEventListener("input", (e) => {
+    const target = e.target as HTMLInputElement;
+    if (!usrConfig.upper && !usrConfig.nums && !usrConfig.symb) {
+      target.checked = true;
+    } else {
+      usrConfig.lower = target.checked;
+      renderToField(usrConfig);
+    }
+  });
+
+  numbersCheckBox?.addEventListener("input", (e) => {
+    const target = e.target as HTMLInputElement;
+    if (!usrConfig.upper && !usrConfig.lower && !usrConfig.symb) {
+      target.checked = true;
+    } else {
+      usrConfig.nums = target.checked;
+      renderToField(usrConfig);
+    }
+  });
+
   symbolsCheckBox?.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement;
-    usrConfig.symb = target.checked;
-    renderToField(usrConfig);
+    if (!usrConfig.upper && !usrConfig.lower && !usrConfig.nums) {
+      target.checked = true;
+    } else {
+      usrConfig.symb = target.checked;
+      renderToField(usrConfig);
+    }
   });
+
   similarCharCheckBox?.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement;
     usrConfig.similarChar = target.checked;

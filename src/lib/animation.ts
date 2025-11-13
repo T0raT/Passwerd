@@ -16,7 +16,7 @@ export default function animatePage() {
     duration: 1000,
     delay: 750,
     ease: spring({
-      bounce: 0.35,
+      bounce: 0.25,
       duration: 500,
     }),
     translateY: { from: "100%" },
