@@ -31,9 +31,9 @@ function avoidSimilarChar(charset: string[]) {
    */
 
   const toRemove: string[] = [];
-  toRemove.push(rng.atomicEntropy() < 0.5 ? "0" : "O");
-  toRemove.push(rng.atomicEntropy() < 0.5 ? "1" : "i");
-  toRemove.push(rng.atomicEntropy() < 0.5 ? "l" : "I");
+  toRemove.push(rng.rng() < 0.5 ? "0" : "O");
+  toRemove.push(rng.rng() < 0.5 ? "1" : "i");
+  toRemove.push(rng.rng() < 0.5 ? "l" : "I");
   charset.filter((item) => {
     toRemove.includes(item);
   });
@@ -51,15 +51,29 @@ function generateCharset(usrConfig: Config) {
   return charset;
 }
 
+// Validates the generate password according to usrConfig values
+function validate(password: string, usrConfig: Config) {
+  const hasLower = usrConfig.lower ? /[a-z]/.test(password) : true;
+  const hasUpper = usrConfig.upper ? /[A-Z]/.test(password) : true;
+  const hasDigit = usrConfig.nums ? /[0-9]/.test(password) : true;
+  const hasSymbol = usrConfig.symb ? /[^A-Za-z0-9]/.test(password) : true;
+  return hasLower && hasUpper && hasDigit && hasSymbol;
+}
+
 export default function PassGen(usrConfig: Config) {
   let charset = generateCharset(usrConfig);
-  let password = "";
+  let password = null;
 
-  for (let i = 0; i < usrConfig.length; i++) {
-    const randNum = rng.randInt(charset.length);
-    password += charset[randNum];
+  do {
+    password = "";
 
-    if (i % 2 === 0) charset = rng.shuffleArr(charset); // Shuffle only on even loops
-  }
+    for (let i = 0; i < usrConfig.length; i++) {
+      const randNum = rng.randInt(charset.length);
+      password += charset[randNum];
+
+      if (i % 2 === 0) charset = rng.shuffleArr(charset); // Shuffle only on even loops
+    }
+  } while (!validate(password, usrConfig));
+
   return password;
 }
