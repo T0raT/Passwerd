@@ -205,6 +205,22 @@ hr.solid {
   margin-bottom: 30px;
 }
 
+/* Footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+footer a {
+  color: white;
+  font-family: "DepartureMono";
+  text-align: center;
+}
+footer svg {
+  display: inline;
+  height: 30px;
+}
+
 /* CRT overlay styling */
 .crt-effect-root {
   position: fixed;

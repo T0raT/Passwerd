@@ -6,8 +6,7 @@ import * as rng from "./rng.ts";
  * 2. Shuffle charset
  * 3. Generate a random number between 0 and length of charset
  * 4. Shuffle charset each time randomly choosing for password
- * TODO: Check nbp for common password
- * TODO: pipeline for sanitization checking
+ * 5. pipeline for sanitization checking
  * */
 
 export interface Config {
@@ -40,6 +39,7 @@ function avoidSimilarChar(charset: string[]) {
   return charset;
 }
 
+// Makes a charset based on usrConfig values
 function generateCharset(usrConfig: Config) {
   // There is probably a more elegant way of doing this :(
   let charset: string[] = [];
@@ -53,6 +53,7 @@ function generateCharset(usrConfig: Config) {
 
 // Validates the generate password according to usrConfig values
 function validate(password: string, usrConfig: Config) {
+  // Must be a better way than testing 4 times lol
   const hasLower = usrConfig.lower ? /[a-z]/.test(password) : true;
   const hasUpper = usrConfig.upper ? /[A-Z]/.test(password) : true;
   const hasDigit = usrConfig.nums ? /[0-9]/.test(password) : true;
