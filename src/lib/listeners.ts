@@ -1,4 +1,3 @@
-import { pass } from "three/tsl";
 import PassGen, { type Config } from "./entropy";
 
 export default function initListeners(usrConfig: Config) {
@@ -32,7 +31,6 @@ export default function initListeners(usrConfig: Config) {
     document.querySelector<HTMLSpanElement>("#num-pass-output");
 
   /* Event listeners for checkboxes */
-
   upperCaseCheckBox?.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement; // To resolve ts error Property 'value' does not exist on type 'EventTarget'. (ts 2339)
 
