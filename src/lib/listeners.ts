@@ -1,3 +1,4 @@
+import { pass } from "three/tsl";
 import PassGen, { type Config } from "./entropy";
 
 export default function initListeners(usrConfig: Config) {
@@ -22,7 +23,15 @@ export default function initListeners(usrConfig: Config) {
   const similarCharCheckBox =
     document.querySelector<HTMLInputElement>("#similar-char");
 
-  // Event listeners for checkboxes
+  const passLen = document.querySelector<HTMLInputElement>("#pass-len-slider");
+  const passLenOutput =
+    document.querySelector<HTMLSpanElement>("#pass-len-output");
+
+  const numPass = document.querySelector<HTMLInputElement>("#num-pass-slider");
+  const numPassOutput =
+    document.querySelector<HTMLSpanElement>("#num-pass-output");
+
+  /* Event listeners for checkboxes */
 
   upperCaseCheckBox?.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement; // To resolve ts error Property 'value' does not exist on type 'EventTarget'. (ts 2339)
@@ -72,7 +81,7 @@ export default function initListeners(usrConfig: Config) {
     renderToField(usrConfig);
   });
 
-  // Attach listener to password length slider
+  /* Attach listener to sliders */
   passLen?.addEventListener("input", (e) => {
     if (passLenOutput && e.target) {
       const target = e.target as HTMLInputElement;
@@ -85,7 +94,18 @@ export default function initListeners(usrConfig: Config) {
     }
   });
 
-  // Assign function to button
+  numPass?.addEventListener("input", (e) => {
+    if (numPassOutput && e.target) {
+      const target = e.target as HTMLInputElement;
+      target.max = "100";
+      numPassOutput.textContent =
+        Number(target.value) > 100 ? "1" : target.value;
+      usrConfig.numPass = Number(target.value) > 100 ? 1 : Number(target.value);
+      renderToField(usrConfig);
+    }
+  });
+
+  // Assign render function to button
   genPassBtn?.addEventListener("click", (event) => {
     event.preventDefault();
     renderToField(usrConfig);
@@ -93,16 +113,9 @@ export default function initListeners(usrConfig: Config) {
 }
 
 /* Output passwords to output field, currently only supports 1 password
- *
- * Need to change how many fields are present dependent on usrConfig.
- * 1. Each output field needs an distinct id so we can query it
- * 2. Attach a listener to the numPass slider
- * 3. Actively add/delete password fields
- * 4. Either on click of generate button, or slider interaction, generate all passwords
+ * The best bet might be using an array to hold all password field references
+ * Skips the need of having unique ids as well for each field, probably.
  * */
-const passLenOutput =
-  document.querySelector<HTMLSpanElement>("#pass-len-output");
-const passLen = document.querySelector<HTMLInputElement>("#pass-len-slider");
 
 const outputField = document.querySelector<HTMLElement>(".output");
 

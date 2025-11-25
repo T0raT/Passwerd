@@ -114,11 +114,14 @@ input[type="range"] {
 .charset-wrapper {
   margin-bottom: 10px;
 }
-#pass-len-wrapper {
+
+/* Sliders */
+.slider-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: sapce-between;
 }
-#pass-len-wrapper label {
+.slider-wrapper label {
   margin-right: 20px;
 }
 

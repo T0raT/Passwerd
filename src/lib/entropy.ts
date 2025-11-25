@@ -23,6 +23,10 @@ function avoidSimilarChar(charset: string[]) {
   /**
    * Very font dependent,
    * with departure mono it's easy to identify.
+   *
+   * This is a very experimental feature because im no expert,
+   * but should not affect password security.
+   *
    * But with more common fonts,
    * definately harder to distinguish between them.
    *
@@ -55,6 +59,7 @@ function generateCharset(usrConfig: Config) {
 // Validates the generate password according to usrConfig values
 function validate(password: string, usrConfig: Config) {
   // Must be a better way than testing 4 times lol
+  // Credits to GPT for the regex because I don't know regex well
   const hasLower = usrConfig.lower ? /[a-z]/.test(password) : true;
   const hasUpper = usrConfig.upper ? /[A-Z]/.test(password) : true;
   const hasDigit = usrConfig.nums ? /[0-9]/.test(password) : true;

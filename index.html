@@ -55,8 +55,8 @@
             </div>
 
             <!-- Password length slider -->
-            <div id="pass-len-wrapper">
-              <label for="pass-len">Characters</label>
+            <div class="slider-wrapper">
+              <label for="pass-len">Length:</label>
               <input
                 id="pass-len-slider"
                 type="range"
@@ -67,6 +67,20 @@
               />
               <span id="pass-len-output" class="green-text">16</span>
             </div>
+
+            <!-- Password Number slider -->
+            <div class="slider-wrapper">
+              <label for="num-pass">Passwords: </label>
+              <input
+                id="num-pass-slider"
+                type="range"
+                name="num-pass"
+                value="1"
+                min="1"
+                max="100"
+              />
+              <span id="num-pass-output" class="green-text">1</span>
+            </div>
           </fieldset>
         </form>
         <button id="gen-btn" role="button">
@@ -76,7 +90,7 @@
         </button>
         <hr class="solid" />
         <div style="display: flex; justify-content: center">
-          <div class="output">Generate a password!</div>
+          <div class="output" id="pass1">Generate a password!</div>
         </div>
       </div>
     </div>
