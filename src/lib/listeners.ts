@@ -22,18 +22,6 @@ export default function initListeners(usrConfig: Config) {
   const similarCharCheckBox =
     document.querySelector<HTMLInputElement>("#similar-char");
 
-  const passLenOutput =
-    document.querySelector<HTMLSpanElement>("#pass-len-output");
-  const passLen = document.querySelector<HTMLInputElement>("#pass-len-slider");
-
-  const outputField = document.querySelector<HTMLElement>(".output");
-
-  // Function takes user config and renders password to page
-  const renderToField = (config: Config) => {
-    if (!outputField) return;
-    outputField.textContent = PassGen(config);
-  };
-
   // Event listeners for checkboxes
 
   upperCaseCheckBox?.addEventListener("input", (e) => {
@@ -103,3 +91,23 @@ export default function initListeners(usrConfig: Config) {
     renderToField(usrConfig);
   });
 }
+
+/* Output passwords to output field, currently only supports 1 password
+ *
+ * Need to change how many fields are present dependent on usrConfig.
+ * 1. Each output field needs an distinct id so we can query it
+ * 2. Attach a listener to the numPass slider
+ * 3. Actively add/delete password fields
+ * 4. Either on click of generate button, or slider interaction, generate all passwords
+ * */
+const passLenOutput =
+  document.querySelector<HTMLSpanElement>("#pass-len-output");
+const passLen = document.querySelector<HTMLInputElement>("#pass-len-slider");
+
+const outputField = document.querySelector<HTMLElement>(".output");
+
+// Function takes user config and renders password to page
+const renderToField = (config: Config) => {
+  if (!outputField) return;
+  outputField.textContent = PassGen(config);
+};

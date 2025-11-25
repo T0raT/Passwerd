@@ -16,6 +16,7 @@ export interface Config {
   symb: boolean;
   similarChar: boolean;
   length: number;
+  numPass: number;
 }
 
 function avoidSimilarChar(charset: string[]) {
@@ -74,7 +75,16 @@ export default function PassGen(usrConfig: Config) {
 
       if (i % 2 === 0) charset = rng.shuffleArr(charset); // Shuffle only on even loops
     }
-  } while (!validate(password, usrConfig));
+  } while (!validate(password, usrConfig)); // Keep trying until password is validated
 
   return password;
+}
+
+// Generates a user defined number of passwords
+export function MultiPassGen(usrConfig: Config) {
+  const passwords = [];
+  for (let i = 0; i < usrConfig.numPass; i++) {
+    passwords.push(PassGen(usrConfig));
+  }
+  return passwords;
 }
