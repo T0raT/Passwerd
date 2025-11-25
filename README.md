@@ -12,5 +12,7 @@ Uses modern browser's [`Crypto`](https://developer.mozilla.org/en-US/docs/Web/AP
 
 > [!NOTE]
 > The CRT effects are not used, too ugly lol
+>
 > [dodled-jump](https://github.com/githubnext/dodled-jump) - Inspirations on the CRT effects.
+>
 > [Codex](https://openai.com/codex/) - Assistance with the CRT effect.
