@@ -94,6 +94,11 @@ input[type="range"] {
   color: var(--dark-fg-sub-text);
 }
 
+.output-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
 .output {
   color: var(--dark-fg-g-text);
   display: inline-block;

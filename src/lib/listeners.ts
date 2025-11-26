@@ -1,6 +1,9 @@
 import PassGen, { type Config } from "./entropy";
 
 export default function initListeners(usrConfig: Config) {
+  // Array to store all password output fields
+  let allOutputFields: HTMLElement[] = [];
+
   // Grabbing user config form element
   const usrConfigForm =
     document.querySelector<HTMLFormElement>("#usr-config-form");
@@ -108,17 +111,26 @@ export default function initListeners(usrConfig: Config) {
     event.preventDefault();
     renderToField(usrConfig);
   });
+
+  /*
+   * Section contains:
+   *
+   * 1. Logic to render multiple password fields
+   * 2. Rendering passwords to said fields
+   * */
+  const pass1 = document.querySelector<HTMLElement>("#pass1");
+  if (!pass1) throw new Error("password field pass1 does not exist");
+
+  // Function to render all necessary password fields
+  const renderAllFields = (usrConfig: Config) => {
+    for (let i = 1; i < usrConfig.numPass; i++) {
+      continue;
+    }
+    return false;
+  };
+
+  // Function takes user config and renders password to page
+  const renderToField = (usrConfig: Config) => {
+    throw new Error("Function not implemented yet");
+  };
 }
-
-/* Output passwords to output field, currently only supports 1 password
- * The best bet might be using an array to hold all password field references
- * Skips the need of having unique ids as well for each field, probably.
- * */
-
-const outputField = document.querySelector<HTMLElement>(".output");
-
-// Function takes user config and renders password to page
-const renderToField = (config: Config) => {
-  if (!outputField) return;
-  outputField.textContent = PassGen(config);
-};
