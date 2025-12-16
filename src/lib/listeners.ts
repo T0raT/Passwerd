@@ -119,7 +119,7 @@ export default function initListeners(usrConfig: Config) {
    * 2. Rendering passwords to said fields
    * */
   const pass1 = document.querySelector<HTMLElement>("#pass1");
-  if (!pass1) throw new Error("password field pass1 does not exist");
+  if (!pass1) throw new Error("defualt password output field does not exist");
 
   // Function to render all necessary password fields
   const renderAllFields = (usrConfig: Config) => {
