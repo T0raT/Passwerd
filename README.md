@@ -9,7 +9,3 @@ Uses modern browser's [`Crypto`](https://developer.mozilla.org/en-US/docs/Web/AP
 [Scrimba](https://scrimba.com) - Providing the figma designs, with my own modifications and implementation
 
 [Uiverse](https://uiverse.io/buttons) - Providing button css, with my own modifications and implementation
-
-[dodled-jump](https://github.com/githubnext/dodled-jump) - Inspirations on the CRT effects.
-
-[Codex](https://openai.com/codex/) - Assistance with the CRT effect.
